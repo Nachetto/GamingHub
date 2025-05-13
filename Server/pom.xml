@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dev.nacho</groupId>
-	<artifactId>social</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>ghub</artifactId>
+	<version>1.0.0-Alfa</version>
 	<name>social</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

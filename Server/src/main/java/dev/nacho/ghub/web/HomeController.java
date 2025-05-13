@@ -1,7 +1,7 @@
-package dev.danvega.social.controller;
+package dev.nacho.ghub.web;
 
 import dev.danvega.social.service.LoginService;
-import dev.danvega.social.service.SmsLoginService;
+import dev.nacho.ghub.service.SmsLoginService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package dev.danvega.social.config;
+package dev.nacho.ghub.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

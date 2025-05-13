@@ -1,4 +1,4 @@
-package dev.danvega.social.service;
+package dev.nacho.ghub.service;
 
 import org.springframework.stereotype.Service;
 
