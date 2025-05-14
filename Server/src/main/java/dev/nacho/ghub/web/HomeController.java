@@ -1,32 +1,47 @@
 package dev.nacho.ghub.web;
 
-import dev.danvega.social.service.LoginService;
-import dev.nacho.ghub.service.SmsLoginService;
+import dev.nacho.ghub.service.impl.SmsLoginServiceImpl;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
+@RequestMapping("/api/auth")
 public class HomeController {
 
+    @GetMapping("/me")
+    public Map<String, Object> me(@AuthenticationPrincipal OAuth2User oauthUser) {
+        // user.getName() suele ser el "sub" de Google
+        String googleId = oauthUser.getName();
 
-    private final SmsLoginService smsLoginService;
+        String email    = oauthUser.getAttribute("email");
+        String nombre   = oauthUser.getAttribute("name");
 
-    public HomeController(SmsLoginService smsLoginService) {
-        this.smsLoginService = smsLoginService;
+        return Map.of(
+                "googleId", googleId,
+                "email",    email,
+                "name",     nombre
+        );
+    }
+
+    private final SmsLoginServiceImpl smsLoginServiceImpl;
+
+    public HomeController(SmsLoginServiceImpl smsLoginServiceImpl) {
+        this.smsLoginServiceImpl = smsLoginServiceImpl;
     }
 
     @PostMapping("/send-code")
     public ResponseEntity<String> sendCode(@RequestParam String phoneNumber) {
-        smsLoginService.sendCode(phoneNumber);
+        smsLoginServiceImpl.sendCode(phoneNumber);
         return ResponseEntity.ok("Code sent");
     }
 
     @PostMapping("/validate-code")
     public ResponseEntity<String> validateCode(@RequestParam String phoneNumber, @RequestParam String code) {
-        boolean valid = smsLoginService.validateCode(phoneNumber, code);
+        boolean valid = smsLoginServiceImpl.validateCode(phoneNumber, code);
         return valid ? ResponseEntity.ok("Logged in successfully")
                 : ResponseEntity.badRequest().body("Invalid code");
     }

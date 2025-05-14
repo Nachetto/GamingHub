@@ -6,23 +6,53 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    private final CustomOAuth2UserService customOAuth2UserService;
+
+    public SecurityConfig(CustomOAuth2UserService customOAuth2UserService) {
+        this.customOAuth2UserService = customOAuth2UserService;
+    }
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/").permitAll();
-                    auth.requestMatchers("/favicon.ico").permitAll();
-                    auth.anyRequest().authenticated();
-                })
-                .oauth2Login(withDefaults())
-                .formLogin(withDefaults())
-                .build();
+        http
+                .csrf().disable()
+
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .permitAll()
+                )
+
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/",
+                                "/favicon.ico",
+                                "/oauth2/**",
+                                "/login/**",
+                                "/api/auth/send-code",
+                                "/api/auth/validate-code"
+                        ).permitAll()
+                        .anyRequest().authenticated()
+                )
+
+                // Configuración de OAuth2 login
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/oauth2/authorization/google")
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(customOAuth2UserService)
+                        )
+                )
+
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                );
+
+        return http.build();
     }
 
 }

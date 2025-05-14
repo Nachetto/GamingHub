@@ -1,9 +1,9 @@
-package dev.nacho.ghub.service;
+package dev.nacho.ghub.service.impl;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class SmsLoginService {
+public class SmsLoginServiceImpl {
     public void sendCode(String phoneNumber) {
         // Generate and send code via SMS gateway
     }
