@@ -1,6 +1,7 @@
 /.idea/
-/server/.idea/
-/server/target/
-/server/.mvn/
-/server/mvnw*/
-/server/pom.xml/
+Server/.idea/
+Server/target/
+Server/.mvn/
+Server/mvnw*/
+Server/pom.xml
+Server/pom.xml
