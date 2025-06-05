@@ -2,7 +2,7 @@ package dev.nacho.ghub.repository;
 
 import dev.nacho.ghub.domain.model.Participante;
 import dev.nacho.ghub.domain.model.Partida;
-import dev.nacho.ghub.domain.model.Usuario;
+import dev.nacho.ghub.domain.model.security.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

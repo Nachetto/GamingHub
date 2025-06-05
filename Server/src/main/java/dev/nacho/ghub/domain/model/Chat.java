@@ -16,19 +16,17 @@ import java.util.UUID;
 public class Chat {
 
     @Id
-    @Column(columnDefinition = "CHAR(36)")
+    @Column(name = "id", columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private UUID id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "tipo", nullable = false, columnDefinition = "ENUM('PRIVADO', 'PARTIDA')") // Ajustado para ENUM
     private TipoChat tipo;
 
-    // Si es un chat de partida, se refiere a esta partida
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "partida_id", unique = true)
+    @JoinColumn(name = "partida_id", unique = true, columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private Partida partida;
 
-    // Mensajes asociados a este chat (privado o de partida)
     @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mensaje> mensajes;
 }

@@ -2,6 +2,7 @@ package dev.nacho.ghub.domain.model;
 
 
 import dev.nacho.ghub.domain.model.enumeration.EstadoPartida;
+import dev.nacho.ghub.domain.model.security.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -18,35 +19,33 @@ import java.util.UUID;
 public class Partida {
 
     @Id
-    @Column(columnDefinition = "CHAR(36)")
+    @Column(name = "id", columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private UUID id;
 
-    // Relación al anfitrión (Usuario.partidasCreadas)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "anfitrion_id", nullable = false)
+    @JoinColumn(name = "anfitrion_id", nullable = false, columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private Usuario anfitrion;
 
-    // Relación al juego (Juego.partidas)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "juego_id", nullable = false)
+    @JoinColumn(name = "juego_id", nullable = false, columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private Juego juego;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "estado", nullable = false, columnDefinition = "ENUM('CREADA', 'EN_CURSO', 'FINALIZADA')") // Ajustado para ENUM
     private EstadoPartida estado;
 
-    @Column(nullable = false)
+    @Column(name = "fecha_creacion", nullable = false, columnDefinition = "DATETIME(6)") // Ajustado para DATETIME
     private LocalDateTime fechaCreacion;
 
-    private Integer duracionEstimada;               // en minutos
-    @Column(columnDefinition = "JSON")
-    private String configExtra;                     // ajustes específicos de cada juego
+    @Column(name = "duracion_estimada", columnDefinition = "INT(11)") // Ajustado para INT
+    private Integer duracionEstimada;
 
-    // Participantes en esta partida (Participante.partida)
+    @Column(name = "config_extra", columnDefinition = "JSON") // Ajustado para JSON
+    private String configExtra;
+
     @OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Participante> participantes;
 
-    // Chat asociado a la partida (Chat.partida)
     @OneToOne(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Chat chat;
 }

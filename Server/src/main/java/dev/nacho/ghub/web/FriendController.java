@@ -4,7 +4,7 @@ package dev.nacho.ghub.web;
 import com.google.api.Authentication;
 import dev.nacho.ghub.domain.model.dto.FriendRequestDTO;
 import dev.nacho.ghub.domain.model.dto.FriendshipDTO;
-import dev.nacho.ghub.service.AmistadService;
+import dev.nacho.ghub.domain.service.AmistadService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

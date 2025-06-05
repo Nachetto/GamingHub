@@ -1,6 +1,7 @@
 package dev.nacho.ghub.domain.model;
 
 import dev.nacho.ghub.domain.model.enumeration.EstadoParticipante;
+import dev.nacho.ghub.domain.model.security.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.UUID;
@@ -15,27 +16,24 @@ import java.util.UUID;
 public class Participante {
 
     @Id
-    @Column(columnDefinition = "CHAR(36)")
+    @Column(name = "id", columnDefinition = "CHAR(36)")
     private UUID id;
 
-    // Relación al usuario participante
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @JoinColumn(name = "usuario_id", nullable = false, columnDefinition = "CHAR(36)")
     private Usuario usuario;
 
-    // Relación a la partida
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "partida_id", nullable = false)
+    @JoinColumn(name = "partida_id", nullable = false, columnDefinition = "CHAR(36)")
     private Partida partida;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "estado", nullable = false, columnDefinition = "ENUM('ACTIVO', 'INACTIVO', 'EXPULSADO')")
     private EstadoParticipante estado;
 
-    // Rol dentro del juego, si aplica (por ejemplo, "IMPOSTOR", "TRIPULANTE"...)
-    @Column(length = 50)
+    @Column(name = "rol_en_juego", length = 50)
     private String rolEnJuego;
 
-    // Puntuación o resultado del participante
+    @Column(name = "puntuacion", columnDefinition = "INT(11)")
     private Integer puntuacion;
 }

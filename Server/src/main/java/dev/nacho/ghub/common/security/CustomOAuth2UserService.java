@@ -1,9 +1,9 @@
-package dev.nacho.ghub.config;
+package dev.nacho.ghub.common.security;
 
-import dev.nacho.ghub.domain.model.Usuario;
+import dev.nacho.ghub.domain.model.security.Roles;
+import dev.nacho.ghub.domain.model.security.Usuario;
 import dev.nacho.ghub.domain.model.enumeration.RolUsuario;
-import dev.nacho.ghub.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import dev.nacho.ghub.repository.UserRepository;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -11,14 +11,15 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Component
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
-    private final UsuarioRepository usuarioRepo;
+    private final UserRepository usuarioRepo;
 
-    public CustomOAuth2UserService(UsuarioRepository usuarioRepo) {
+    public CustomOAuth2UserService(UserRepository usuarioRepo) {
         this.usuarioRepo = usuarioRepo;
     }
 
@@ -40,7 +41,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                             .googleId(googleId)
                             .email(email)
                             .nombreUsuario(nombre)
-                            .rol(RolUsuario.USUARIO)
+                            .roles(Set.of(Roles.builder()
+                                    .rol(RolUsuario.USUARIO)
+                                    .build()))
                             .fechaRegistro(LocalDateTime.now())
                             .build();
                     return usuarioRepo.save(u);

@@ -1,4 +1,4 @@
-package dev.nacho.ghub.service;
+package dev.nacho.ghub.domain.service;
 
 import dev.nacho.ghub.domain.model.dto.FriendRequestDTO;
 import dev.nacho.ghub.domain.model.dto.FriendshipDTO;

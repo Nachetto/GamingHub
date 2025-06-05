@@ -1,4 +1,4 @@
-package dev.nacho.ghub.service.impl;
+package dev.nacho.ghub.domain.service.impl;
 
 import org.springframework.stereotype.Service;
 

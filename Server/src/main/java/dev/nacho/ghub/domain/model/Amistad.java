@@ -1,6 +1,7 @@
 package dev.nacho.ghub.domain.model;
 
 import dev.nacho.ghub.domain.model.enumeration.EstadoAmistad;
+import dev.nacho.ghub.domain.model.security.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -17,26 +18,24 @@ import java.util.UUID;
 public class Amistad {
 
     @Id
-    @Column(columnDefinition = "CHAR(36)")
+    @Column(name = "id", columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private UUID id;
 
-    // Quien envía la solicitud
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @JoinColumn(name = "usuario_id", nullable = false, columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private Usuario usuario;
 
-    // Quien recibe la solicitud
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "amigo_id", nullable = false)
+    @JoinColumn(name = "amigo_id", nullable = false, columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private Usuario amigo;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "estado", nullable = false, columnDefinition = "ENUM('PENDIENTE', 'ACEPTADA', 'RECHAZADA')") // Ajustado para ENUM
     private EstadoAmistad estado;
 
-    @Column(nullable = false)
+    @Column(name = "fecha_solicitud", nullable = false, columnDefinition = "DATETIME(6)") // Coincide con la definición en la base de datos
     private LocalDateTime fechaSolicitud;
 
-    //fechaAceptacion sólo cuando el estado pase a ACEPTADA
+    @Column(name = "fecha_aceptacion", columnDefinition = "DATETIME(6)") // Coincide con la definición en la base de datos
     private LocalDateTime fechaAceptacion;
 }
