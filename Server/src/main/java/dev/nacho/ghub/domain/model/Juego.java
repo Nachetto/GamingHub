@@ -15,19 +15,18 @@ import java.util.UUID;
 public class Juego {
 
     @Id
-    @Column(columnDefinition = "CHAR(36)")
+    @Column(name = "id", columnDefinition = "CHAR(36)")
     private UUID id;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(name = "nombre", nullable = false, unique = true, length = 100)
     private String nombre;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "reglas", columnDefinition = "TEXT")
     private String reglas;
 
-    // Partidas asociadas a este juego
     @OneToMany(mappedBy = "juego", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Partida> partidas;
 }

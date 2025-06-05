@@ -1,4 +1,4 @@
-package dev.nacho.ghub.service;
+package dev.nacho.ghub.domain.service;
 
 public interface ParticipanteService {
 }

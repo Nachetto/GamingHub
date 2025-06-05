@@ -1,5 +1,6 @@
 package dev.nacho.ghub.domain.model;
 
+import dev.nacho.ghub.domain.model.security.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -15,25 +16,23 @@ import java.util.UUID;
 public class Mensaje {
 
     @Id
-    @Column(columnDefinition = "CHAR(36)")
+    @Column(name = "id", columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private UUID id;
 
-    // Chat al que pertenece el mensaje
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chat_id", nullable = false)
+    @JoinColumn(name = "chat_id", nullable = false, columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private Chat chat;
 
-    // Autor del mensaje (Usuario)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "autor_id", nullable = false)
+    @JoinColumn(name = "autor_id", nullable = false, columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
     private Usuario autor;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(name = "contenido", columnDefinition = "TEXT", nullable = false) // Ajustado para TEXT
     private String contenido;
 
-    @Column(nullable = false)
+    @Column(name = "fecha_envio", nullable = false, columnDefinition = "DATETIME(6)") // Ajustado para DATETIME
     private LocalDateTime fechaEnvio;
 
-    @Column(nullable = false)
+    @Column(name = "es_sistema", nullable = false, columnDefinition = "TINYINT(1)") // Ajustado para TINYINT
     private boolean esSistema;
 }
