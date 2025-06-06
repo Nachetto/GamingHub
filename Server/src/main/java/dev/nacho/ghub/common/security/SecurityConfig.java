@@ -1,7 +1,6 @@
 package dev.nacho.ghub.common.security;
 
 import dev.nacho.ghub.common.Constants;
-
 import dev.nacho.ghub.filters.TokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,15 +35,18 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
 
                 .formLogin(form -> form
-                        .loginPage("/login")
+                        .loginPage("/api/auth/loginPage")
                         .permitAll()
                 )
 
                 .authorizeHttpRequests(req -> req
                                 .requestMatchers(
-                                        Constants.BASE_URL+Constants.PATH_LOGIN,
-                                        Constants.BASE_URL+Constants.PATH_REGISTER,
+                                        "/api/auth/**",
+                                        "/error",
+                                        Constants.BASE_URL+ Constants.AUTH_URL+Constants.PATH_LOGIN,
+                                        Constants.BASE_URL+ Constants.AUTH_URL+Constants.PATH_REGISTER,
                                         "/",
+                                        "/loginPage",
                                         "/favicon.ico",
                                         "/oauth2/**",
                                         "/login/**",

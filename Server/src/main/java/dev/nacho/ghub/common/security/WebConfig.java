@@ -1,8 +1,7 @@
 package dev.nacho.ghub.common.security;
 
-import dev.nacho.ghub.repository.UserRepository;
 import dev.nacho.ghub.domain.service.security.CustomUserDetailsService;
-
+import dev.nacho.ghub.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -3,6 +3,7 @@ package dev.nacho.ghub.domain.model;
 import dev.nacho.ghub.domain.model.enumeration.TipoChat;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.List;
 import java.util.UUID;
 

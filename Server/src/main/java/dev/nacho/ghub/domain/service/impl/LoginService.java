@@ -2,7 +2,7 @@ package dev.nacho.ghub.domain.service.impl;
 
 import dev.nacho.ghub.common.security.PasswordHash;
 import dev.nacho.ghub.domain.model.security.Token;
-import dev.nacho.ghub.domain.model.security.Usuario;
+import dev.nacho.ghub.domain.model.Usuario;
 import dev.nacho.ghub.domain.service.security.JwtService;
 import dev.nacho.ghub.repository.RolesRepository;
 import dev.nacho.ghub.repository.UserRepository;

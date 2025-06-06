@@ -1,13 +1,10 @@
-package dev.nacho.ghub.domain.model.security;
+package dev.nacho.ghub.domain.model;
 
 
-import dev.nacho.ghub.domain.model.Amistad;
-import dev.nacho.ghub.domain.model.Mensaje;
-import dev.nacho.ghub.domain.model.Participante;
-import dev.nacho.ghub.domain.model.Partida;
-import dev.nacho.ghub.domain.model.enumeration.RolUsuario;
+import dev.nacho.ghub.domain.model.security.Roles;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;

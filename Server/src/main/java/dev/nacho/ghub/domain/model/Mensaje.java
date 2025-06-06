@@ -1,8 +1,8 @@
 package dev.nacho.ghub.domain.model;
 
-import dev.nacho.ghub.domain.model.security.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 

@@ -1,7 +1,7 @@
 package dev.nacho.ghub.repository;
 
 
-import dev.nacho.ghub.domain.model.security.Usuario;
+import dev.nacho.ghub.domain.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

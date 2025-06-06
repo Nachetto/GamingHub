@@ -1,8 +1,8 @@
 package dev.nacho.ghub.common.security;
 
-import dev.nacho.ghub.domain.model.security.Roles;
-import dev.nacho.ghub.domain.model.security.Usuario;
 import dev.nacho.ghub.domain.model.enumeration.RolUsuario;
+import dev.nacho.ghub.domain.model.security.Roles;
+import dev.nacho.ghub.domain.model.Usuario;
 import dev.nacho.ghub.repository.UserRepository;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;

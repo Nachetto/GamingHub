@@ -1,5 +1,6 @@
 package dev.nacho.ghub.domain.model.security;
 
+import dev.nacho.ghub.domain.model.Usuario;
 import dev.nacho.ghub.domain.model.enumeration.RolUsuario;
 import jakarta.persistence.*;
 import lombok.*;

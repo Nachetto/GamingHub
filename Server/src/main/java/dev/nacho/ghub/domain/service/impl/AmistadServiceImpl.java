@@ -1,15 +1,16 @@
 package dev.nacho.ghub.domain.service.impl;
 
 import dev.nacho.ghub.domain.model.Amistad;
-import dev.nacho.ghub.domain.model.security.Usuario;
 import dev.nacho.ghub.domain.model.dto.FriendRequestDTO;
 import dev.nacho.ghub.domain.model.dto.FriendshipDTO;
 import dev.nacho.ghub.domain.model.enumeration.EstadoAmistad;
+import dev.nacho.ghub.domain.model.Usuario;
+import dev.nacho.ghub.domain.service.AmistadService;
 import dev.nacho.ghub.repository.AmistadRepository;
 import dev.nacho.ghub.repository.UserRepository;
-import dev.nacho.ghub.domain.service.AmistadService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 

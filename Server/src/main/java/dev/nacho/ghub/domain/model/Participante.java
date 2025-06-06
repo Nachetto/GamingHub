@@ -1,9 +1,9 @@
 package dev.nacho.ghub.domain.model;
 
 import dev.nacho.ghub.domain.model.enumeration.EstadoParticipante;
-import dev.nacho.ghub.domain.model.security.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.UUID;
 
 @Entity

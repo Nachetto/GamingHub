@@ -1,19 +1,14 @@
 package dev.nacho.ghub.domain.service.security;
 
-import dev.nacho.ghub.domain.model.enumeration.RolUsuario;
+import dev.nacho.ghub.domain.model.Usuario;
+import dev.nacho.ghub.repository.UserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
-
-
-
-import dev.nacho.ghub.repository.UserRepository;
-import dev.nacho.ghub.domain.model.security.Roles;
-import dev.nacho.ghub.domain.model.security.Usuario;
-import org.springframework.stereotype.Service;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
