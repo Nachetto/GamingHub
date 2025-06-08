@@ -72,8 +72,7 @@ public class LoginService {
         }
         rolesRepository.saveAll(userEntity.getRoles());
 
-        Usuario ret = userRepository.save(userEntity);
-        return false;
+        return userRepository.save(userEntity).equals(userEntity);
     }
 
 
