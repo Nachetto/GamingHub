@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nachorestaurante.domain.modelo.Customer
-import com.example.nachorestaurante.domain.usecases.DeleteCustomerUseCase
-import com.example.nachorestaurante.domain.usecases.GetAllCustomersUseCase
+import com.example.nachorestaurante.domain.usecases.old.DeleteCustomerUseCase
+import com.example.nachorestaurante.domain.usecases.old.GetAllCustomersUseCase
 import com.example.nachorestaurante.framework.common.ConstantesFramework
 import com.example.nachorestaurante.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel

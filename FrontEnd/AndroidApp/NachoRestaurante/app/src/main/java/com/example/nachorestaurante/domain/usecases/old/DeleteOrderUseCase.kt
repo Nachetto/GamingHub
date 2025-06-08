@@ -1,4 +1,4 @@
-package com.example.nachorestaurante.domain.usecases
+package com.example.nachorestaurante.domain.usecases.old
 
 import com.example.nachorestaurante.data.repositorios.OrderRepository
 import com.example.nachorestaurante.domain.modelo.Order
