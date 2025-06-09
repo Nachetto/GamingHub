@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gaminghub.data.repositorios.SecurePreferencesRepository
 import com.example.gaminghub.databinding.RegisterBinding
+import com.example.gaminghub.framework.pantallaHome.HomeActivity
 import com.example.gaminghub.framework.pantallamain.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -62,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
                 is RegisterState.Success -> {
                     Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     intent.putExtra("username",state.username)
                     finish()

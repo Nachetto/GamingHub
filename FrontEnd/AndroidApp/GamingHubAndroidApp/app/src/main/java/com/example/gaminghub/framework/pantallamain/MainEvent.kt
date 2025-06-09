@@ -6,6 +6,7 @@ sealed class MainEvent {
     class DeleteCustomer(val customer:Customer) : MainEvent()
     class SeleccionaCustomer(val customer: Customer) : MainEvent()
     class GetCustomersFiltrados(val filtro: String) : MainEvent()
+    class SetUsername(val username: String) : MainEvent()
     object GetCustomers : MainEvent()
     object StartSelectMode: MainEvent()
     object ResetSelectMode: MainEvent()

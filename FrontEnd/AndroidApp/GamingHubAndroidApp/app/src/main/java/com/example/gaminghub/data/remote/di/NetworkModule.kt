@@ -4,6 +4,7 @@ import com.example.gaminghub.data.remote.security.AuthAuthenticator
 import com.example.gaminghub.data.remote.security.AuthInterceptor
 import com.example.gaminghub.data.remote.security.DataStoreClass
 import com.example.gaminghub.data.remote.service.AuthService
+import com.example.gaminghub.data.remote.service.PartidaService
 import com.example.gaminghub.data.remote.service.old.CustomerService
 import com.example.gaminghub.data.remote.service.old.OrderService
 import com.example.gaminghub.data.repositorios.AuthRepository
@@ -38,6 +39,12 @@ object NetworkModule {
     @Singleton
     fun provideOrderService(@MainRetrofit retrofit: Retrofit): OrderService {
         return retrofit.create(OrderService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePartidaService(@MainRetrofit retrofit: Retrofit): PartidaService {
+        return retrofit.create(PartidaService::class.java)
     }
 
     // BASE SETUP //

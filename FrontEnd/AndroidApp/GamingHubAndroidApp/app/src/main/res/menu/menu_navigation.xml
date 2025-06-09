@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/mainActivity"
-        android:contentDescription="PrimeraRaiz"
+        android:id="@+id/mainActivityNavigation"
+        android:contentDescription="Home"
         android:icon="@drawable/baseline_home"
-        android:title="Raiz 1" />
+        android:title="Home" />
     <item
-        android:id="@+id/fragmentCuatro"
-        android:contentDescription="SegundaRaiz"
+        android:id="@+id/socialActivityNavigation"
+        android:contentDescription="Social"
         android:icon="@drawable/people"
-        android:title="Raiz 2" />
+        android:title="Social" />
     <item
-        android:id="@+id/fragmentSiete"
-        android:contentDescription="TerceraRaiz"
+        android:id="@+id/menu_profile"
+        android:contentDescription="Cuenta"
         android:icon="@drawable/account"
-        android:title="Raiz 3" />
+        android:title="Cuenta" />
 </menu>

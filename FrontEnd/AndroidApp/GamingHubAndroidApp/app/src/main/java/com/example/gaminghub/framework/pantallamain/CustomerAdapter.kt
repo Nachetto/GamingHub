@@ -19,8 +19,7 @@ import com.example.gaminghub.framework.pantalladetallada.DetailedActivity
 class CustomerAdapter(
     val context: Context,
     val actions: CustomerActions
-) :
-    ListAdapter<Customer, CustomerAdapter.ItemViewholder>(DiffCallback()) {
+) : ListAdapter<Customer, CustomerAdapter.ItemViewholder>(DiffCallback()) {
     private var selectedCustomers = mutableSetOf<Customer>()
     private var selectedMode: Boolean = false
 
@@ -64,22 +63,22 @@ class CustomerAdapter(
             listemers(item, itemView, binding)
 
             with(binding) {
-                tvNombre.text = item.name + " " + item.surname
-                tvId.text = item.id.toString()
-                if (selectedMode)
-                    selected.visibility = View.VISIBLE
-                else {
-                    item.isSelected = false
-                    selected.visibility = View.GONE
-                }
-
-                if (selectedCustomers.contains(item)) {
-                    itemView.setBackgroundResource(R.drawable.item_background_selected);
-                    binding.selected.isChecked = true;
-                } else {
-                    itemView.setBackgroundResource(R.drawable.item_background);
-                    binding.selected.isChecked = false;
-                }
+//                tvNombre.text = item.name + " " + item.surname
+//                tvId.text = item.id.toString()
+//                if (selectedMode)
+//                    selected.visibility = View.VISIBLE
+//                else {
+//                    item.isSelected = false
+//                    selected.visibility = View.GONE
+//                }
+//
+//                if (selectedCustomers.contains(item)) {
+//                    itemView.setBackgroundResource(R.drawable.item_background_selected);
+//                    binding.selected.isChecked = true;
+//                } else {
+//                    itemView.setBackgroundResource(R.drawable.item_background);
+//                    binding.selected.isChecked = false;
+//                }
 
             }
         }
@@ -112,21 +111,21 @@ class CustomerAdapter(
         }
 
         with(binding){
-            selected.setOnClickListener {
-                if (selectedMode) {
-
-                    if (binding.selected.isChecked) {
-                        item.isSelected = true
-                        itemView.setBackgroundColor(android.graphics.Color.DKGRAY)
-                        selectedCustomers.add(item)
-                    } else {
-                        item.isSelected = false
-                        itemView.setBackgroundColor(android.graphics.Color.argb(255, 0, 255, 255))
-                        selectedCustomers.remove(item)
-                    }
-                    actions.itemHasClicked(item)
-                }
-            }
+//            selected.setOnClickListener {
+//                if (selectedMode) {
+//
+//                    if (binding.selected.isChecked) {
+//                        item.isSelected = true
+//                        itemView.setBackgroundColor(android.graphics.Color.DKGRAY)
+//                        selectedCustomers.add(item)
+//                    } else {
+//                        item.isSelected = false
+//                        itemView.setBackgroundColor(android.graphics.Color.argb(255, 0, 255, 255))
+//                        selectedCustomers.remove(item)
+//                    }
+//                    actions.itemHasClicked(item)
+//                }
+//            }
         }
     }
 

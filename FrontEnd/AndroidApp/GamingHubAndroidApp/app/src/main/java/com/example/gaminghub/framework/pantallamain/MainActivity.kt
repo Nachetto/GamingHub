@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     private var actionMode: ActionMode? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val username = intent.getStringExtra("username")
+        viewModel.handleEvent(MainEvent.SetUsername(username ?: ""))
 
         super.onCreate(savedInstanceState)
         primeraVez = true
@@ -148,7 +150,6 @@ class MainActivity : AppCompatActivity() {
     private fun configAppBar() {
         // el boton de buscar de la top app bar
         val actionSearch = binding.topAppBar.menu.findItem(R.id.search).actionView as SearchView
-
         actionSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false

@@ -35,4 +35,14 @@ class SecurePreferencesRepository @Inject constructor(
             Pair(null, null)
         }
     }
+
+    fun getUsername(): String? {
+        return try {
+            val decrypted = cryptoHelper.readAndDecryptData()
+            val parts = decrypted.split(":")
+            if (parts.isNotEmpty()) parts[0] else null
+        } catch (e: Exception) {
+            null
+        }
+    }
 }

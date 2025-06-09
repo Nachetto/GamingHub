@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.gaminghub.data.repositorios.SecurePreferencesRepository
 import com.example.gaminghub.databinding.LoginBinding
 import com.example.gaminghub.domain.modelo.UserAuth
+import com.example.gaminghub.framework.pantallaHome.HomeActivity
 import com.example.gaminghub.framework.pantallaRegister.RegisterActivity
 import com.example.gaminghub.framework.pantallamain.MainActivity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -142,9 +143,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateToMain(authenticatedUser: UserAuth) {
         // Aquí puedes manejar la navegación a la pantalla principal
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("username", authenticatedUser.username)
+        startActivity(intent)
         finish()
     }
 

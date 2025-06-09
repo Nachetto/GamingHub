@@ -6,5 +6,6 @@ data class MainState (
     val customers: List<Customer> = emptyList(),
     val customersSeleccionadas: List<Customer> = emptyList(),
     val selectMode: Boolean = false,
-    val error: String? = null
+    val error: String? = null,
+    val username: String = ""
 )

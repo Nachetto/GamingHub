@@ -31,7 +31,8 @@ class MainViewModel @Inject constructor(
             customers = emptyList(),
             customersSeleccionadas = emptyList(),
             selectMode = false,
-            error = this.error.value
+            error = this.error.value,
+            username = "",
         )
         _error.value = ""
         getCustomers()
@@ -60,6 +61,8 @@ class MainViewModel @Inject constructor(
             MainEvent.StartSelectMode -> _uiState.value =
                 _uiState.value?.copy(selectMode = true)
 
+            is MainEvent.SetUsername -> _uiState.value =
+                _uiState.value?.copy(username = event.username)
         }
     }
 

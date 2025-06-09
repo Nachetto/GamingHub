@@ -7,14 +7,16 @@
     tools:context=".framework.pantallaLogin.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/fondo" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/fondo" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -22,9 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Iniciar Sesión"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +67,7 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="#001F54"
         android:text="Iniciar Sesión"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
@@ -88,7 +90,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:backgroundTint="#001F54"
+        android:backgroundTint="@color/dark_bg1"
         android:drawableStart="@drawable/google_icon"
         android:drawablePadding="8dp"
         android:text="Iniciar Sesion con Google"

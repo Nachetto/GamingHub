@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NachoGamingHub"
         tools:targetApi="31"
-        android:label="Nacho Restaurante"
+        android:label="Gaming Hub"
         android:name="com.example.gaminghub.framework.NachoApp"
-        android:icon="@drawable/logofinal"
-        android:roundIcon="@drawable/logofinal"
+        android:icon="@drawable/final_logo"
+        android:roundIcon="@drawable/final_logo"
         >
 
         <activity
@@ -39,6 +39,12 @@
 
         <activity
             android:name=".framework.pantallaLogin.LoginActivity"
+            android:exported="true"
+            android:permission="android.permission.INTERNET">
+        </activity>
+
+        <activity
+            android:name=".framework.pantallaHome.HomeActivity"
             android:exported="true"
             android:permission="android.permission.INTERNET">
         </activity>
