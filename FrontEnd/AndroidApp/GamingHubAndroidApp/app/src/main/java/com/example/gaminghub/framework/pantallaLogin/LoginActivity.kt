@@ -4,21 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.IntentSenderRequest
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.example.gaminghub.data.repositorios.SecurePreferencesRepository
 import com.example.gaminghub.databinding.LoginBinding
 import com.example.gaminghub.domain.modelo.UserAuth
 import com.example.gaminghub.framework.pantallaHome.HomeActivity
 import com.example.gaminghub.framework.pantallaRegister.RegisterActivity
-import com.example.gaminghub.framework.pantallamain.MainActivity
-import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint

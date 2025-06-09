@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gaminghub.framework.pantallaLogin.LoginActivity
-import com.example.gaminghub.framework.pantallamain.MainActivity
 
 class LoadActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {

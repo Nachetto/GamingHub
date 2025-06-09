@@ -3,10 +3,9 @@ package com.example.gaminghub.data.remote.di
 import com.example.gaminghub.data.remote.security.AuthAuthenticator
 import com.example.gaminghub.data.remote.security.AuthInterceptor
 import com.example.gaminghub.data.remote.security.DataStoreClass
+import com.example.gaminghub.data.remote.service.AmigosService
 import com.example.gaminghub.data.remote.service.AuthService
 import com.example.gaminghub.data.remote.service.PartidaService
-import com.example.gaminghub.data.remote.service.old.CustomerService
-import com.example.gaminghub.data.remote.service.old.OrderService
 import com.example.gaminghub.data.repositorios.AuthRepository
 import dagger.Lazy
 import dagger.Module
@@ -29,22 +28,17 @@ object NetworkModule {
     fun provideAuthenticationService(@MainRetrofit retrofit: Retrofit): AuthService =
         retrofit.create(AuthService::class.java)
 
-    @Provides
-    @Singleton
-    fun provideCustomerService(@MainRetrofit retrofit: Retrofit): CustomerService {
-        return retrofit.create(CustomerService::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideOrderService(@MainRetrofit retrofit: Retrofit): OrderService {
-        return retrofit.create(OrderService::class.java)
-    }
 
     @Provides
     @Singleton
     fun providePartidaService(@MainRetrofit retrofit: Retrofit): PartidaService {
         return retrofit.create(PartidaService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAmigosService(@MainRetrofit retrofit: Retrofit): AmigosService {
+        return retrofit.create(AmigosService::class.java)
     }
 
     // BASE SETUP //

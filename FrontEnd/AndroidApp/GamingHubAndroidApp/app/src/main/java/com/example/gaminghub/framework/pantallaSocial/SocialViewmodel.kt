@@ -1,4 +1,4 @@
-package com.example.gaminghub.framework.pantallaHome
+package com.example.gaminghub.framework.pantallaSocial
 
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -6,67 +6,70 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gaminghub.data.common.NetworkResult
-import com.example.gaminghub.domain.modelo.PartidaCard
-import com.example.gaminghub.domain.usecases.GetPartidasUseCase
+import com.example.gaminghub.domain.modelo.FriendCard
+import com.example.gaminghub.domain.usecases.GetAmigosUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
-class HomeViewmodel @Inject constructor(
-     private val getPartidasUseCase: GetPartidasUseCase,
+class SocialViewmodel @Inject constructor(
+    private val getAmigosUseCase: GetAmigosUseCase,
 ) : ViewModel() {
-    private val listaPartidas = mutableListOf<PartidaCard>()
+    private val listaAmigos = mutableListOf<FriendCard>()
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
-    private val _uiState = MutableLiveData(HomeState())
-    val uiState: LiveData<HomeState> get() = _uiState
+    private val _uiState = MutableLiveData(SocialState())
+    val uiState: LiveData<SocialState> get() = _uiState
 
     init {
-        _uiState.value = HomeState(
-            partidas = emptyList(),
+        _uiState.value = SocialState(
+            amigos = emptyList(),
             error = this.error.value
         )
     }
 
-    fun handleEvent(event: HomeEvent) {
+    fun handleEvent(event: SocialEvent) {
         when (event) {
-            is HomeEvent.GetPartidas -> {
-                getPartidas(event.username)
+            is SocialEvent.GetAmigos -> {
+                getAmigos(event.username)
             }
 
-            is HomeEvent.GetPartidasFiltradas -> filterPartidas(event.filter)
+            is SocialEvent.GetAmigosFiltrados -> filterAmigos(event.filter)
         }
     }
 
-
-    private fun filterPartidas(filtro: String) {
+    private fun filterAmigos(filtro: String) {
         viewModelScope.launch {
             _uiState.value = _uiState.value?.copy(
-                partidas = listaPartidas.filter { partida ->
-                    partida.juegoNombre.contains(filtro, ignoreCase = true)
+                amigos = listaAmigos.filter { amigo ->
+                    amigo.friendName.contains(filtro, ignoreCase = true)
                 }.toList()
             )
         }
+
     }
 
-    private fun getPartidas(username: String) {
+    private fun getAmigos(username: String) {
+
+
         viewModelScope.launch {
             try {
-                val result = getPartidasUseCase.invoke(username)
+                val result = getAmigosUseCase.invoke(username)
                 when (result) {
                     is NetworkResult.Success -> {
-                        listaPartidas.clear()
-                        result.data?.let { partidas ->
-                            listaPartidas.addAll(partidas.map { partidaDTO ->
-                                partidaDTO.toPartidaTarjeta()
+                        listaAmigos.clear()
+                        result.data?.let { amigos ->
+                            listaAmigos.addAll(amigos.map { amigoDTO ->
+                                amigoDTO.toAmigoTarjeta()
                             })
                         }
                         _uiState.value = _uiState.value?.copy(
-                            partidas = listaPartidas
+                            amigos = listaAmigos
                         )
                     }
+
                     is NetworkResult.Error -> {
                         _error.value = result.message ?: "Unknown error"
                     }
@@ -81,7 +84,7 @@ class HomeViewmodel @Inject constructor(
                 _error.value = e.message ?: "Unknown error"
             }
         }
-    }
 
+    }
 
 }

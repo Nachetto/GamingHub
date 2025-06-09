@@ -11,7 +11,7 @@ import com.example.gaminghub.domain.modelo.UserAuth
 import com.example.gaminghub.domain.usecases.LoginUseCase
 import com.example.gaminghub.domain.usecases.RegisterUseCase
 import com.example.gaminghub.domain.usecases.SaveTokenUseCase
-import com.example.gaminghub.framework.pantallaRegister.RegisterState.*
+import com.example.gaminghub.framework.pantallaRegister.RegisterState.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch

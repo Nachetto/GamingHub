@@ -11,12 +11,11 @@ import com.example.gaminghub.domain.modelo.UserAuth
 import com.example.gaminghub.domain.usecases.LoginUseCase
 import com.example.gaminghub.domain.usecases.LoginWithGoogleUseCase
 import com.example.gaminghub.domain.usecases.SaveTokenUseCase
-import com.example.gaminghub.framework.pantallaLogin.LoginState.*
+import com.example.gaminghub.framework.pantallaLogin.LoginState.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.invoke
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(

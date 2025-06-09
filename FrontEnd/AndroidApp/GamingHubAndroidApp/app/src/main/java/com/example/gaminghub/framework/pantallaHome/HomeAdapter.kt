@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gaminghub.domain.modelo.PartidaCard
 import com.example.gaminghub.R
+import com.example.gaminghub.domain.modelo.PartidaCard
 
 class HomeAdapter(
     val context: Context,

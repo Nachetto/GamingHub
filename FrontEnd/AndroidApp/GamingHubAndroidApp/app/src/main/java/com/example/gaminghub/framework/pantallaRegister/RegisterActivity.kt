@@ -9,10 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.gaminghub.data.repositorios.SecurePreferencesRepository
 import com.example.gaminghub.databinding.RegisterBinding
 import com.example.gaminghub.framework.pantallaHome.HomeActivity
-import com.example.gaminghub.framework.pantallamain.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.getValue
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {

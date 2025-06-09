@@ -31,14 +31,14 @@
         android:layout_width="334dp"
         android:layout_height="31dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/rvPartidas"
+        app:layout_constraintBottom_toTopOf="@+id/rvAmigos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout" />
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPartidas"
+        android:id="@+id/rvAmigos"
         android:layout_width="338dp"
         android:layout_height="567dp"
         android:layout_marginStart="10dp"

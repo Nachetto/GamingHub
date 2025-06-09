@@ -9,9 +9,8 @@ import androidx.appcompat.widget.SearchView
 import com.example.gaminghub.R
 import com.example.gaminghub.databinding.HomeScreenBinding
 import com.example.gaminghub.domain.modelo.PartidaCard
-import com.example.gaminghub.framework.common.ConstantesFramework
-import com.example.gaminghub.framework.pantalladetallada.DetailedEvent
-import com.example.gaminghub.framework.pantallamain.MainEvent
+import com.example.gaminghub.framework.pantallaProfile.ProfileActivity
+import com.example.gaminghub.framework.pantallaSocial.SocialActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -70,15 +69,15 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupAdapter() {
+        homeAdapter = HomeAdapter(this)
+        binding.rvPartidas.adapter = homeAdapter
+    }
+
     private fun loadinitialData() {
         username = intent.getStringExtra("username") ?: ""
         binding.mensajeBienvenida.text = "Bienvenido de vuelta, "+ username
         viewModel.handleEvent(HomeEvent.GetPartidas(username))
-    }
-
-    private fun setupAdapter() {
-        homeAdapter = HomeAdapter(this)
-        binding.rvPartidas.adapter = homeAdapter
     }
 
     private fun configureAppBarAndNavigationBar() {
@@ -120,15 +119,18 @@ class HomeActivity : AppCompatActivity() {
 
     private fun navigateToProfileScreen() {
         //intent al ProfileActivity pasando el username
-//        val intent = Intent(this, ProfileActivity::class.java)
-//        intent.putExtra("username", username)
-//        startActivity(intent)
-//        finish()
+        val intent = Intent(this, ProfileActivity::class.java)
+        intent.putExtra("username", username)
+        startActivity(intent)
+        finish()
     }
 
     private fun navigateToSocialScreeen() {
         //intent al SocialActivity pasando el username
-        TODO("Not yet implemented")
+        val intent = Intent(this, SocialActivity::class.java)
+        intent.putExtra("username", username)
+        startActivity(intent)
+        finish()
     }
 
 }
