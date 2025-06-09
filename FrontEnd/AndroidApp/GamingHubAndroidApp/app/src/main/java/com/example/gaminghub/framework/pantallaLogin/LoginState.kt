@@ -1,5 +1,9 @@
-package com.example.nachorestaurante.framework.pantallaLogin
+package com.example.gaminghub.framework.pantallaLogin
 
-class LoginState (
-    val error: String? = null
-)
+import com.example.gaminghub.domain.modelo.UserAuth
+
+sealed class LoginState {
+    data class Success(val authenticatedUser: UserAuth) : LoginState()
+    data class Error(val message: String) : LoginState()
+    data class Loading(val isLoading: Boolean) : LoginState()
+}

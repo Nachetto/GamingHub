@@ -1,4 +1,4 @@
-package com.example.nachorestaurante.framework.pantallamain
+package com.example.gaminghub.framework.pantallamain
 
 import android.content.Context
 import android.content.Intent
@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nachorestaurante.R
-import com.example.nachorestaurante.databinding.ViewCustomerBinding
-import com.example.nachorestaurante.domain.modelo.Customer
-import com.example.nachorestaurante.framework.common.ConstantesFramework
-import com.example.nachorestaurante.framework.pantalladetallada.DetailedActivity
+import com.example.gaminghub.R
+import com.example.gaminghub.databinding.ViewCustomerBinding
+import com.example.gaminghub.domain.modelo.old.Customer
+import com.example.gaminghub.framework.common.ConstantesFramework
+import com.example.gaminghub.framework.pantalladetallada.DetailedActivity
 
 
 class CustomerAdapter(
@@ -28,9 +28,7 @@ class CustomerAdapter(
         fun onDelete(customer: Customer)
         fun onStartSelectMode(customer: Customer)
         fun itemHasClicked(customer: Customer)
-
     }
-
 
     fun startSelectMode() {
         selectedMode = true
@@ -62,9 +60,9 @@ class CustomerAdapter(
 
     inner class ItemViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ViewCustomerBinding.bind(itemView)
-
         fun bind(item: Customer) {
             listemers(item, itemView, binding)
+
             with(binding) {
                 tvNombre.text = item.name + " " + item.surname
                 tvId.text = item.id.toString()
@@ -106,7 +104,9 @@ class CustomerAdapter(
             else{
                 val context = it.context
                 val intent = Intent(context, DetailedActivity::class.java)
+                //clave valor
                 intent.putExtra(ConstantesFramework.CUSTOMERDETAILED, item.id)
+                //cambio de actividad
                 context.startActivity(intent)
             }
         }

@@ -1,7 +1,7 @@
-package com.example.nachorestaurante.framework.pantalladetallada
+package com.example.gaminghub.framework.pantalladetallada
 
-import com.example.nachorestaurante.domain.modelo.Customer
-import com.example.nachorestaurante.domain.modelo.Order
+import com.example.gaminghub.domain.modelo.old.Customer
+import com.example.gaminghub.domain.modelo.old.Order
 
 data class DetailedState (
     val orders: List<Order> = emptyList(),

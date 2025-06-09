@@ -1,12 +1,12 @@
-package com.example.nachorestaurante.framework
+package com.example.gaminghub.framework
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nachorestaurante.framework.pantallaLogin.LoginActivity
-import com.example.nachorestaurante.framework.pantallamain.MainActivity
+import com.example.gaminghub.framework.pantallaLogin.LoginActivity
+import com.example.gaminghub.framework.pantallamain.MainActivity
 
 class LoadActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {

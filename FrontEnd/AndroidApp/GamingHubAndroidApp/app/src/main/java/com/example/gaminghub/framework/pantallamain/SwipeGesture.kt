@@ -1,11 +1,11 @@
-package com.example.nachorestaurante.framework.pantallamain
+package com.example.gaminghub.framework.pantallamain
 
 import android.graphics.Canvas
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
 import androidx.core.content.ContextCompat
-import com.example.nachorestaurante.R
+import com.example.gaminghub.R
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 abstract class SwipeGesture(context: Context) : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){

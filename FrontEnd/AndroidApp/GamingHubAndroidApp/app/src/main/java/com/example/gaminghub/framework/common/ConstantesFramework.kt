@@ -1,4 +1,4 @@
-package com.example.nachorestaurante.framework.common
+package com.example.gaminghub.framework.common
 
 class ConstantesFramework {
     companion object {

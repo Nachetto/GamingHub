@@ -1,6 +1,6 @@
-package com.example.nachorestaurante.framework.pantallamain
+package com.example.gaminghub.framework.pantallamain
 
-import com.example.nachorestaurante.domain.modelo.Customer
+import com.example.gaminghub.domain.modelo.old.Customer
 
 data class MainState (
     val customers: List<Customer> = emptyList(),

@@ -1,5 +1,5 @@
-package com.example.nachorestaurante.framework.pantallamain
-import com.example.nachorestaurante.domain.modelo.Customer
+package com.example.gaminghub.framework.pantallamain
+import com.example.gaminghub.domain.modelo.old.Customer
 
 sealed class MainEvent {
     class DeleteCustomersSeleccionados() : MainEvent()

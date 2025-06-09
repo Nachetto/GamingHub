@@ -1,6 +1,6 @@
-package com.example.nachorestaurante.framework.pantalladetallada
+package com.example.gaminghub.framework.pantalladetallada
 
-import com.example.nachorestaurante.framework.pantallamain.SwipeGesture
+import com.example.gaminghub.framework.pantallamain.SwipeGesture
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nachorestaurante.R
-import com.example.nachorestaurante.databinding.ViewOrderBinding
-import com.example.nachorestaurante.domain.modelo.Order
+import com.example.gaminghub.R
+import com.example.gaminghub.databinding.ViewOrderBinding
+import com.example.gaminghub.domain.modelo.old.Order
 
 class OrderAdapter(
     val context: Context,

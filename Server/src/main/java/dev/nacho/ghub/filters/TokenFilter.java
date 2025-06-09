@@ -66,8 +66,11 @@ public class TokenFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getRequestURI();
-        return path.equals(Constants.BASE_URL+Constants.PATH_LOGIN)
-                || path.startsWith(Constants.BASE_URL+Constants.PATH_REGISTER)
-                || path.equals(Constants.BASE_URL+Constants.PATH_REFRESH_TOKEN);
+        return path.equals(Constants.BASE_URL+ Constants.AUTH_URL+Constants.PATH_LOGIN)
+                || path.startsWith(Constants.BASE_URL+ Constants.AUTH_URL+Constants.PATH_REGISTER)
+                || path.equals(Constants.BASE_URL+ Constants.AUTH_URL+Constants.PATH_REFRESH_TOKEN)
+                || path.equals("/auth/register")
+                || path.equals("/auth/login")
+                || path.equals("/auth/refresh-token");
     }
 }

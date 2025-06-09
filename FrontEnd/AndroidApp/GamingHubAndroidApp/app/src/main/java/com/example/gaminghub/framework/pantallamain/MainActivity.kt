@@ -1,4 +1,4 @@
-package com.example.nachorestaurante.framework.pantallamain
+package com.example.gaminghub.framework.pantallamain
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,15 +9,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.view.ActionMode
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
-import com.example.nachorestaurante.R
-import com.example.nachorestaurante.databinding.ActivityMainBinding
-import com.example.nachorestaurante.domain.modelo.Customer
-import com.example.nachorestaurante.framework.common.ConstantesFramework
+import com.example.gaminghub.R
+import com.example.gaminghub.databinding.ActivityMainBinding
+import com.example.gaminghub.domain.modelo.old.Customer
+import com.example.gaminghub.framework.common.ConstantesFramework
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
     private var primeraVez: Boolean = false
     private lateinit var customAdapter: CustomerAdapter
@@ -39,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         configAppBar()
     }
 
+    // Inflate the menu; this adds items to the action bar if it is present.
     private fun setupAdapter() {
         customAdapter = CustomerAdapter(this,
             object : CustomerAdapter.CustomerActions {
@@ -54,20 +54,26 @@ class MainActivity : AppCompatActivity() {
                     viewModel.handleEvent(MainEvent.SeleccionaCustomer(customer))
                 }
             })
+
         binding.rvCustomers.adapter = customAdapter
         val touchHelper = ItemTouchHelper(customAdapter.swipeGesture)
         touchHelper.attachToRecyclerView(binding.rvCustomers)
     }
 
-
+    //Observa cambios del estado para actualizar la UI
     private fun obserbarViewModel() {
         viewModel.uiState.observe(this) { estado ->
+            // si cambia la lista de customers, se actualiza el adapter
             estado.customers.let {
                 if (it.isNotEmpty()) {
                     customAdapter.submitList(it)
                 }
             }
+
+            // si cambia el modo de seleccion, se actualiza la action bar
             cambiosModoSeleccion(estado)
+
+            // si hay un error, se muestra un toast
             estado.error?.let {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
@@ -89,6 +95,7 @@ class MainActivity : AppCompatActivity() {
                 actionMode?.finish()
             }
         }
+
         estado.selectMode.let { seleccionado ->
             if (seleccionado) {
                 if (primeraVez) {
@@ -139,7 +146,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configAppBar() {
+        // el boton de buscar de la top app bar
         val actionSearch = binding.topAppBar.menu.findItem(R.id.search).actionView as SearchView
+
         actionSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false

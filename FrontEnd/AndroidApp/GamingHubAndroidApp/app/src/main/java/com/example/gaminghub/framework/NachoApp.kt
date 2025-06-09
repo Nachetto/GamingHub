@@ -1,4 +1,4 @@
-package com.example.nachorestaurante.framework
+package com.example.gaminghub.framework
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 

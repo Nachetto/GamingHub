@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -13,7 +14,7 @@
         android:theme="@style/Theme.NachoGamingHub"
         tools:targetApi="31"
         android:label="Nacho Restaurante"
-        android:name="com.example.nachorestaurante.framework.NachoApp"
+        android:name="com.example.gaminghub.framework.NachoApp"
         android:icon="@drawable/logofinal"
         android:roundIcon="@drawable/logofinal"
         >
@@ -23,11 +24,25 @@
             android:exported="true"
             android:permission="android.permission.INTERNET">
         </activity>
+
         <activity
             android:name=".framework.pantalladetallada.DetailedActivity"
             android:exported="true"
             android:permission="android.permission.INTERNET">
         </activity>
+
+        <activity
+            android:name=".framework.pantallaRegister.RegisterActivity"
+            android:exported="true"
+            android:permission="android.permission.INTERNET">
+        </activity>
+
+        <activity
+            android:name=".framework.pantallaLogin.LoginActivity"
+            android:exported="true"
+            android:permission="android.permission.INTERNET">
+        </activity>
+
         <activity
             android:name=".framework.LoadActivity"
             android:theme="@style/SpashLogo"

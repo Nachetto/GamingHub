@@ -1,4 +1,4 @@
-package com.example.nachorestaurante.data.common
+package com.example.gaminghub.data.common
 
 import android.content.Context
 import androidx.annotation.StringRes

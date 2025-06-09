@@ -1,6 +1,6 @@
-package com.example.nachorestaurante.framework.pantalladetallada
+package com.example.gaminghub.framework.pantalladetallada
 
-import com.example.nachorestaurante.domain.modelo.Order
+import com.example.gaminghub.domain.modelo.old.Order
 
 sealed class DetailedEvent {
     class DeleteOrder(val pedido: Order) : DetailedEvent()

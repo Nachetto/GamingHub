@@ -1,4 +1,4 @@
-package com.example.client.di
+package com.example.gaminghub.di
 
 import dagger.Module
 import dagger.Provides

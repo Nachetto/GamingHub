@@ -43,6 +43,7 @@ public class SecurityConfig {
                                 .requestMatchers(
                                         "/api/auth/**",
                                         "/error",
+                                        "/auth/register",
                                         Constants.BASE_URL+ Constants.AUTH_URL+Constants.PATH_LOGIN,
                                         Constants.BASE_URL+ Constants.AUTH_URL+Constants.PATH_REGISTER,
                                         "/",

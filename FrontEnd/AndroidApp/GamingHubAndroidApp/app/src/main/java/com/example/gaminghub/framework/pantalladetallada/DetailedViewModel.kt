@@ -1,17 +1,17 @@
-package com.example.nachorestaurante.framework.pantalladetallada
+package com.example.gaminghub.framework.pantalladetallada
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.nachorestaurante.domain.usecases.old.AddOrderUseCase
-import com.example.nachorestaurante.domain.usecases.old.GetAllFilteredOrdersUseCase
+import com.example.gaminghub.domain.usecases.old.AddOrderUseCase
+import com.example.gaminghub.domain.usecases.old.GetAllFilteredOrdersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
-import com.example.nachorestaurante.domain.modelo.Order
-import com.example.nachorestaurante.domain.usecases.old.DeleteOrderUseCase
-import com.example.nachorestaurante.domain.usecases.old.GetCustomerFromIdUseCase
-import com.example.nachorestaurante.utils.NetworkResult
+import com.example.gaminghub.domain.modelo.old.Order
+import com.example.gaminghub.domain.usecases.old.DeleteOrderUseCase
+import com.example.gaminghub.domain.usecases.old.GetCustomerFromIdUseCase
+import com.example.gaminghub.data.common.NetworkResult
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 

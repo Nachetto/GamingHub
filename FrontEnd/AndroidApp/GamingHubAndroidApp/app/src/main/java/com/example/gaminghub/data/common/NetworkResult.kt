@@ -1,9 +1,16 @@
-package com.example.nachorestaurante.data.common
+package com.example.gaminghub.data.common
 
 sealed class NetworkResult<T> {
     class Success<T>(val data: T) : NetworkResult<T>()
     class Error<T>(val message: String) : NetworkResult<T>()
     class Loading<T> : NetworkResult<T>()
+
+    inline fun <R> dataOrNull(): R? =
+        when (this) {
+            is Success -> data as R
+            is Error -> null
+            is Loading -> null
+        }
 
     inline fun <R> map(transform: (data: T) -> R): NetworkResult<R> =
         when (this) {

@@ -28,9 +28,4 @@ public class Roles {
     @Column(name = "rol", nullable = false, length = 255)
     @Enumerated(EnumType.STRING)
     private RolUsuario rol;
-
-    public Roles(String usuarioId,RolUsuario rol ) {
-        this.usuario = Usuario.builder().id(UUID.fromString(usuarioId)).build();
-        this.rol = rol;
-    }
 }

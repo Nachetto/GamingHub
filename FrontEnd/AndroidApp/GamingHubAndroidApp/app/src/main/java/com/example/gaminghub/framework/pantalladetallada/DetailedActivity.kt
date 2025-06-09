@@ -1,16 +1,16 @@
-package com.example.nachorestaurante.framework.pantalladetallada
+package com.example.gaminghub.framework.pantalladetallada
 
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nachorestaurante.databinding.ActivityDetailedBinding
+import com.example.gaminghub.databinding.ActivityDetailedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
 import android.os.Bundle
 import androidx.recyclerview.widget.ItemTouchHelper
-import com.example.nachorestaurante.domain.modelo.Order
-import com.example.nachorestaurante.framework.common.ConstantesFramework
+import com.example.gaminghub.domain.modelo.old.Order
+import com.example.gaminghub.framework.common.ConstantesFramework
 
 @AndroidEntryPoint
 class DetailedActivity : AppCompatActivity() {

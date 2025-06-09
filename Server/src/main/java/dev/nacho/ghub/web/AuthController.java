@@ -1,6 +1,7 @@
 package dev.nacho.ghub.web;
 
 import dev.nacho.ghub.common.Constants;
+import dev.nacho.ghub.domain.model.dto.GoogleUserInfo;
 import dev.nacho.ghub.domain.model.dto.LoginRequestDTO;
 import dev.nacho.ghub.domain.model.enumeration.RolUsuario;
 import dev.nacho.ghub.domain.model.security.Roles;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(Constants.BASE_URL+ Constants.AUTH_URL)
@@ -42,25 +44,53 @@ public class AuthController {
                 : ResponseEntity.ok(tokens);
     }
 
+    @PostMapping("/google-login")
+    public ResponseEntity<Token> googleLogin(@RequestParam String idToken) {
+        // 1. Validar el idToken con Google y extraer datos
+        GoogleUserInfo userInfo = servicioLogin.verifyAndExtract(idToken);
+        if (userInfo == null) {
+            return ResponseEntity.status(401).build();
+        }
+
+        // 2. Buscar o crear usuario en tu base de datos
+        Usuario usuario = servicioLogin.findByGoogleId(userInfo.getSub());
+        if (usuario == null) {
+            usuario = new Usuario();
+            usuario.setGoogleId(userInfo.getSub());
+            usuario.setEmail(userInfo.getEmail());
+            usuario.setNombreUsuario(userInfo.getName());
+            usuario.setEnabled(true);
+            usuario.setRoles(Set.of(new Roles(null,usuario, RolUsuario.USUARIO)));
+            servicioLogin.save(usuario);
+        }
+
+        // 3. Generar tu propio JWT
+        UserDetails userDetails = userDetailsService.loadUserByUsername(usuario.getNombreUsuario());
+        String jwt = jwtService.generateToken(userDetails);
+        String refreshToken = jwtService.generateRefreshToken(userDetails);
+        return ResponseEntity.ok(new Token(jwt, refreshToken));
+    }
+
     @PostMapping(Constants.PATH_REGISTER)
     public ResponseEntity<Void> signup(@RequestParam String username,
                                        @RequestParam String password,
                                        @RequestParam String phone) {
-        Usuario userEntity = new Usuario().builder()
+        // Crear y persistir el usuario
+        Usuario userEntity = Usuario.builder()
+                .id(new UUID(0, 0))
                 .nombreUsuario(username)
                 .password(password)
                 .telefono(phone)
-                .enabled(true)
-                .roles(Set.of(new Roles(null, RolUsuario.USUARIO))) // el ID se genera automáticamente
                 .build();
-        userEntity.setNombreUsuario(username);
-        userEntity.setPassword(password);
-        userEntity.setTelefono(phone);
         userEntity.setEnabled(true);
-        userEntity.setRoles(Set.of(new Roles(userEntity.getId().toString(), RolUsuario.USUARIO)));
-        return servicioLogin.save(userEntity)
-                        ? ResponseEntity.status(500).body(null)
-                        : ResponseEntity.status(201).build();
+        Roles rolUsuario = new Roles(null, userEntity, RolUsuario.USUARIO);
+        userEntity.setRoles(Set.of(rolUsuario));
+
+        Usuario usuarioPersistido = servicioLogin.save(userEntity);
+        if (usuarioPersistido == null) {
+            return ResponseEntity.status(400).build();
+        }
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping(Constants.PATH_REFRESH_TOKEN)

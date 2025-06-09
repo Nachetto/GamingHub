@@ -1,14 +1,14 @@
-package com.example.nachorestaurante.framework.pantallamain
+package com.example.gaminghub.framework.pantallamain
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nachorestaurante.domain.modelo.Customer
-import com.example.nachorestaurante.domain.usecases.old.DeleteCustomerUseCase
-import com.example.nachorestaurante.domain.usecases.old.GetAllCustomersUseCase
-import com.example.nachorestaurante.framework.common.ConstantesFramework
-import com.example.nachorestaurante.utils.NetworkResult
+import com.example.gaminghub.data.common.NetworkResult
+import com.example.gaminghub.domain.modelo.old.Customer
+import com.example.gaminghub.domain.usecases.old.DeleteCustomerUseCase
+import com.example.gaminghub.domain.usecases.old.GetAllCustomersUseCase
+import com.example.gaminghub.framework.common.ConstantesFramework
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -83,6 +83,8 @@ class MainViewModel @Inject constructor(
                         listaCustomers.addAll(result.data as Collection<Customer>)
                     }
                 }
+
+                is NetworkResult.Loading<*> -> TODO()
             }
             _uiState.value = _uiState.value?.copy(customers = listaCustomers)
         }

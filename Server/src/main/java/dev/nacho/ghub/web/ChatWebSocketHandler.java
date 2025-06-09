@@ -30,16 +30,17 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
         ObjectMapper mapper = new ObjectMapper();
         Mensaje chatMessage = mapper.readValue(payload, Mensaje.class);
 
-        switch (chatMessage.getType()) {
-            case "subscribe":
-                // registrar subscripción a un chatId
-                break;
-            case "message":
-                // reenviar mensaje a usuarios subscritos
-                sendToChat(chatMessage);
-                break;
-            // puedes tener más tipos: seen, typing, etc.
-        }
+        //TODO
+//        switch (chatMessage.getType()) {
+//            case "subscribe":
+//                // registrar subscripción a un chatId
+//                break;
+//            case "message":
+//                // reenviar mensaje a usuarios subscritos
+//                sendToChat(chatMessage);
+//                break;
+//            // puedes tener más tipos: seen, typing, etc.
+//        }
     }
 
     private void sendTo564Chat(Mensaje msg) throws IOException {

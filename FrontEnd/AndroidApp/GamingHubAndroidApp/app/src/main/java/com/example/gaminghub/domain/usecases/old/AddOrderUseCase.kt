@@ -1,8 +1,8 @@
-package com.example.nachorestaurante.domain.usecases.old
+package com.example.gaminghub.domain.usecases.old
 
-import com.example.nachorestaurante.data.repositorios.OrderRepository
-import com.example.nachorestaurante.domain.modelo.Order
-import com.example.nachorestaurante.utils.NetworkResult
+import com.example.gaminghub.data.common.NetworkResult
+import com.example.gaminghub.data.repositorios.old.OrderRepository
+import com.example.gaminghub.domain.modelo.old.Order
 import javax.inject.Inject
 
 class AddOrderUseCase @Inject constructor(private val repository: OrderRepository) {

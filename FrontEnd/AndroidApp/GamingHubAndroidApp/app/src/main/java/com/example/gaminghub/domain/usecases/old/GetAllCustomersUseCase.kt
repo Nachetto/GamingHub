@@ -1,8 +1,8 @@
-package com.example.nachorestaurante.domain.usecases.old
+package com.example.gaminghub.domain.usecases.old
 
-import com.example.nachorestaurante.data.repositorios.CustomerRepository
-import com.example.nachorestaurante.domain.modelo.Customer
-import com.example.nachorestaurante.utils.NetworkResult
+import com.example.gaminghub.data.repositorios.old.CustomerRepository
+import com.example.gaminghub.domain.modelo.old.Customer
+import com.example.gaminghub.data.common.NetworkResult
 import javax.inject.Inject
 
 class GetAllCustomersUseCase @Inject constructor(

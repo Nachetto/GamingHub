@@ -1,4 +1,4 @@
-package com.example.client.di
+package com.example.gaminghub.di
 
 import android.content.Context
 import androidx.datastore.core.DataStore
