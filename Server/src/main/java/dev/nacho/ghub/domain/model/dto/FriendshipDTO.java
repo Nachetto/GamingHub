@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 @Builder
 public class FriendshipDTO {
-    private UUID id;
+    private String id;
     private String requesterUsername;
     private String targetUsername;
     private EstadoAmistad estado;

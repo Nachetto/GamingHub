@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -77,10 +78,11 @@ public class AuthController {
                                        @RequestParam String phone) {
         // Crear y persistir el usuario
         Usuario userEntity = Usuario.builder()
-                .id(new UUID(0, 0))
+                .id(UUID.randomUUID().toString())
                 .nombreUsuario(username)
                 .password(password)
                 .telefono(phone)
+                .fechaRegistro(LocalDateTime.now())
                 .build();
         userEntity.setEnabled(true);
         Roles rolUsuario = new Roles(null, userEntity, RolUsuario.USUARIO);
@@ -112,7 +114,6 @@ public class AuthController {
     public Map<String, Object> me(@AuthenticationPrincipal OAuth2User oauthUser) {
         // user.getName() suele ser el "sub" de Google
         String googleId = oauthUser.getName();
-
         String email    = oauthUser.getAttribute("email")== null ? "" : oauthUser.getAttribute("email");
         String nombre   = oauthUser.getAttribute("name")== null ? "" : oauthUser.getAttribute("name");
 

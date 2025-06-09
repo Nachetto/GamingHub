@@ -32,7 +32,7 @@ public class AmistadServiceImpl implements AmistadService {
 
         // 4. Crear la solicitud
         Amistad amistad = Amistad.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.randomUUID().toString())
                 .usuario(friendRequestData.requester())
                 .amigo(friendRequestData.target())
                 .estado(EstadoAmistad.PENDIENTE)

@@ -37,7 +37,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         Usuario user = usuarioRepo.findByGoogleId(googleId)
                 .orElseGet(() -> {
                     Usuario u = Usuario.builder()
-                            .id(UUID.randomUUID())
+                            .id(UUID.randomUUID().toString())
                             .googleId(googleId)
                             .email(email)
                             .nombreUsuario(nombre)

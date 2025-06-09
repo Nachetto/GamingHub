@@ -18,7 +18,7 @@ public class Chat {
 
     @Id
     @Column(name = "id", columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
-    private UUID id;
+    private String id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo", nullable = false, columnDefinition = "ENUM('PRIVADO', 'PARTIDA')") // Ajustado para ENUM

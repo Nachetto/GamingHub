@@ -17,7 +17,7 @@ public class Mensaje {
 
     @Id
     @Column(name = "id", columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos
-    private UUID id;
+    private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chat_id", nullable = false, columnDefinition = "CHAR(36)") // Coincide con la definición en la base de datos

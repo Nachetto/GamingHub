@@ -17,7 +17,7 @@ public class Juego {
 
     @Id
     @Column(name = "id", columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
 
     @Column(name = "nombre", nullable = false, unique = true, length = 100)
     private String nombre;

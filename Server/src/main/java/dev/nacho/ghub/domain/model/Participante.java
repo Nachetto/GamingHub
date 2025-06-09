@@ -17,7 +17,7 @@ public class Participante {
 
     @Id
     @Column(name = "id", columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false, columnDefinition = "CHAR(36)")
