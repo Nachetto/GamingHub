@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gaminghub.data.common.NetworkResult
+import com.example.gaminghub.data.model.PartidaDTO
 import com.example.gaminghub.domain.modelo.PartidaCard
 import com.example.gaminghub.domain.usecases.GetPartidasUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
